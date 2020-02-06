@@ -7,7 +7,8 @@ class ListUsers extends React.Component {
     state = {
         reload: true,
         user: [],
-        page: 1
+        page: 1,
+        loading: true
     }
     componentDidMount() {
         if (this.state.reload) {
@@ -65,7 +66,11 @@ class ListUsers extends React.Component {
                                 <td><img src={u.avatar} /></td>
                                 <td><Button id={u.id} variant="success" onClick={() =>
                                     this.props.history.push(`/list/${u.id}`)
-                                }>Edit</Button> <Button id={u.id} variant="danger">Delete</Button></td>
+                                }>Edit</Button> 
+                                <Button id={u.id} variant="danger">
+                                    Delete
+                                </Button>
+                                </td>
                             </tr>
                         )
                     })

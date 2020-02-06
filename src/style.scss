@@ -16,3 +16,13 @@ img{
 .pageBtn{
   margin: 5px
 }
+
+.centerLogin{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img{
+    height: 200px;
+    width: 200px;
+  }
+}

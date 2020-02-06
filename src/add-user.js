@@ -1,10 +1,10 @@
 import React from 'react';
 import './style.scss';
 import { Button, Row, Col, Form, Container } from 'react-bootstrap';
+
 class AddUser extends React.Component {
  
     render() {
-
         return (
             <Container>
                 <Form>

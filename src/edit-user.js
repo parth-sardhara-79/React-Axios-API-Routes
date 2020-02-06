@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import { Button, Row, Col, Form, Container } from 'react-bootstrap';
+import loading from './loading.gif';
 class EditUser extends React.Component {
     state = {
+        loading: true,
         editFirstName: "",
         editLastName: "",
         editEmail: "",
@@ -13,6 +15,7 @@ class EditUser extends React.Component {
         var { reload } = this.state;
 
         if (reload) {
+
             console.log("Called fff");
             axios.get(`https://reqres.in/api/users/${id}`)
                 .then(res => {
@@ -20,7 +23,8 @@ class EditUser extends React.Component {
                         editFirstName: res.data.data.first_name,
                         editLastName: res.data.data.last_name,
                         editEmail: res.data.data.email,
-                        reload: false
+                        reload: false,
+                        loading: false
                     });
                 })
                 .catch(err => console.log("Error" + err));
@@ -36,7 +40,7 @@ class EditUser extends React.Component {
             editLastName: event.target.value
         })
     }
-    emailHandler = event =>{
+    emailHandler = event => {
         this.setState({
             editEmail: event.target.value
         })
@@ -44,7 +48,7 @@ class EditUser extends React.Component {
     render() {
         let { editFirstName, editLastName, editEmail } = this.state;
         return (<>
-            <Container>
+            {this.state.loading ? <div className="centerLogin"><img src={loading} /></div> :<Container>
                 <Form>
                     <Form.Group>
                         <Row>
@@ -76,7 +80,7 @@ class EditUser extends React.Component {
                         </Row>
                     </Form.Group>
                 </Form>
-            </Container>
+            </Container>}
         </>)
     }
 }
